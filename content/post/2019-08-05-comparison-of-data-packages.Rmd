@@ -23,6 +23,7 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+
 ---
 
 
@@ -45,7 +46,6 @@ Then let's load the libraries and get the data, I'll use iris dataset that's ava
 
 ```{r}
 library(dplyr)
-library(data.table)
 data("iris")
 #iris
 ```
