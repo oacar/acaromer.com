@@ -156,7 +156,7 @@ sns.distplot(sepal_width_vec)
 
 Here I compared the mostly used functions in data science when dealing with data frames in R using dplyr functions and in Python using Pandas. These are only single ways of doing these things and R has multiple different ways of doing same things due to difference in base R data frame functions and packages like `dplyr` or `data.table`. I feel `tidyverse` way of doing things are intuitive and easy to read especially using pipes. 
 
-As far as I know Pandas is the mostly used package for working with data frames in Python. I am sure there are other packages but I never need to work with them or encountered. Pandas website also has a [reference page][https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html] for R and Pandas function comparisons.
+As far as I know Pandas is the mostly used package for working with data frames in Python. I am sure there are other packages but I never need to work with them or encountered. Pandas website also has a [reference page](https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html) for R and Pandas function comparisons.
 
 
 
