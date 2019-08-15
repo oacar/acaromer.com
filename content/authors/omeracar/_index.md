@@ -34,9 +34,9 @@ social:
 #- icon: google-scholar
 #  icon_pack: ai
 #  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
-- icon: github
-  icon_pack: fab
-  link: https://github.com/oacar
+#- icon: github
+#  icon_pack: fab
+#  link: https://github.com/oacar
 - icon: linkedin-in
   icon_pack: fab
   link: https://www.linkedin.com/in/omer-acar-98b00187/
