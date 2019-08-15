@@ -88,6 +88,20 @@
 
   
   
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-145122708-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
   
 
   
@@ -233,57 +247,6 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/projects"><span>Projects</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#featured"><span>Publications</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-
-        <li class="nav-item">
           <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
         </li>
 
@@ -345,6 +308,8 @@
     
       <li><a href="/talk/example/">Example Talk</a></li>
     
+      <li><a href="/post/comparison-of-data-packages/">Comparison of data manipulation with different R and Python packages</a></li>
+    
       <li><a href="/post/writing-technical-content/">Writing technical content in Academic</a></li>
     
       <li><a href="/publication/preprint/">An example preprint / working paper</a></li>
@@ -355,9 +320,7 @@
     
       <li><a href="/projects/">Projects</a></li>
     
-      <li><a href="/privacy/">Privacy Policy</a></li>
-    
-      <li><a href="/terms/">Terms</a></li>
+      <li><a href="/license/">LICENSE: CC-BY-SA</a></li>
     
   </ul>
   
@@ -475,20 +438,14 @@
     <footer class="site-footer">
   
   <p class="powered-by">
-    
-      <a href="/privacy/">Privacy Policy</a>
-    
-    
-       &middot; 
-      <a href="/terms/">Terms</a>
-        
+    <a href="/license/">LICENSE: CC-BY-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
   </p>
   
 
   <p class="powered-by">
     &copy; Omer Acar, 2019 &middot; 
 
-    Powered by the
+    Made with <i class="far fa-heart" style="color:#E13D3D"></i>, the <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a> package, and the 
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
     <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
 
@@ -503,7 +460,6 @@
     
   </p>
 </footer>
-
   </div>
   
 

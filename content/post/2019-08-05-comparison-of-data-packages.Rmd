@@ -1,0 +1,124 @@
+---
+title: Comparison of data manipulation with different R and Python packages
+author: Omer Acar
+date: '2019-08-05'
+slug: comparison-of-data-packages
+categories:
+  - R
+  - Python
+tags:
+  - dplyr
+  - data.table
+  - pandas
+  - R
+  - python
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2019-08-05T14:41:37-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and everytime I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes. 
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(message=FALSE)
+```
+
+First to use python in R markdown, I use RStudio and reticulate
+```{r}
+library(reticulate)
+use_condaenv("r-reticulate")
+```
+
+Then let's load the libraries and get the data:
+```{r}
+library(dplyr)
+library(data.table)
+data("iris")
+#iris
+```
+
+```{python}
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+iris
+```
+
+Tidyverse functions are usually self-explained. To get rows with a condition there is a ```filter``` function, to extract a column from data frame there is ```select```. ```mutate``` is used for adding new columns to dataframe based on values on other columns or as I use most of time with external ```ifelse``` statements. Let's see how these functions and uses are in both languages.
+To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use dataframes as arguments to functions.
+
+
+## Filter
+```{r}
+iris_sepal_long <- filter(iris, Sepal.Length>5)
+head(iris_sepal_long)
+```
+
+```{python}
+iris_sepal_long = iris[iris.sepal_length>5]
+iris_sepal_long
+```
+Any logical statements combined with logical `OR` or `AND` statements can be used when filtering data frame. I'll show with python but same applies to R as well.
+
+```{python}
+iris_sepal_filter = iris[(iris.sepal_length>5)&(iris.sepal_width<4)&(iris.species=='setosa')]
+iris_sepal_filter
+```
+
+
+## Mutate
+```{r}
+#iris$newcolumn <- iris$Sepal.Length/iris$Sepal.Width
+iris_sepal_length_over_width <- mutate(iris,sepal_length_over_width = Sepal.Length / Sepal.Width)
+head(iris_sepal_length_over_width)
+```
+
+```{python}
+iris_sepal_length_over_width = iris.assign(sepal_length_over_width = iris.sepal_length / iris.sepal_width)
+iris_sepal_length_over_width
+```
+
+
+## Select
+This is one of the most important functions if when dealing with data frames. 
+```{r}
+sepal_data <- select(iris,Sepal.Length,Sepal.Width)
+head(sepal_data)
+```
+```{python}
+sepal_data = iris[['sepal_length','sepal_width']]
+sepal_data
+```
+
+However one thing I do a lot when using ```select``` getting a column and turn it into a vector because `select` returns a data frame with a signle column, for quick plotting with base R functions.
+
+```{r}
+sepal_width_vector <- pull(select(iris,Sepal.Width))
+head(sepal_width_vector)
+hist(sepal_width_vector)
+```
+
+```{python}
+sepal_width_vec = iris.sepal_width.tolist()
+sepal_width_vec
+import seaborn as sns
+
+sns.set_style('darkgrid')
+sns.distplot(sepal_width_vec)
+```
+
+
+## Sorting
+```{r}
+arrange(iris)
+```
+
+## Summarizing data with groups
