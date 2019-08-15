@@ -1,9 +1,9 @@
 ---
-title: Comparison of data manipulation with different R and Python packages
+title: Comparison of data manipulation with different R and Python packages Part I
 author: Omer Acar
 date: '2019-08-05'
 slug: comparison-of-data-packages
-draft: true
+draft: false
 categories:
   - R
   - Python
@@ -117,9 +117,9 @@ sns.distplot(sepal_width_vec)
 ```
 
 
-## Sorting
-```{r}
-arrange(iris)
-```
+<!-- ## Sorting -->
+<!-- ```{r} -->
+<!-- arrange(iris) -->
+<!-- ``` -->
 
-## Summarizing data with groups
+<!-- ## Summarizing data with groups -->
