@@ -27,7 +27,7 @@ projects: []
 ---
 
 
-I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and everytime I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes. 
+I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and every time I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes. 
 
 
 ```{r, include=FALSE}
@@ -59,8 +59,8 @@ iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/maste
 iris
 ```
 
-Tidyverse functions are usually self-explained. To get rows with a condition there is a ```filter``` function, to extract a column from data frame there is ```select```. ```mutate``` is used for adding new columns to dataframe based on values on other columns or as I use most of time with external ```ifelse``` statements. Let's see how these functions and uses are in both languages.
-To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use dataframes as arguments to functions.
+Tidyverse functions are usually self-explained. To get rows with a condition there is a ```filter``` function, to extract a column from data frame there is ```select```. ```mutate``` is used for adding new columns to data frame based on values on other columns or as I use most of time with external ```ifelse``` statements. Let's see how these functions and uses are in both languages.
+To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use data frames as arguments to functions.
 
 
 ## Filter
@@ -128,7 +128,7 @@ sepal_data = iris[['sepal_length','sepal_width']]
 sepal_data
 ```
 
-However one thing I do a lot when using ```select``` getting a column and turn it into a vector because `select` returns a data frame with a signle column, for quick plotting with base R functions. To do this in R you need to use `pull` function after selecting the data. Then you will have a vector of the selected column which can be directly used in plotting functions like `plot` or `hist`
+However one thing I do a lot when using ```select``` getting a column and turn it into a vector because `select` returns a data frame with a single column, for quick plotting with base R functions. To do this in R you need to use `pull` function after selecting the data. Then you will have a vector of the selected column which can be directly used in plotting functions like `plot` or `hist`
 
 ### R
 

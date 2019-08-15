@@ -28,7 +28,7 @@ projects: []
 
 
 
-<p>I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and everytime I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes.</p>
+<p>I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and every time I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes.</p>
 <p>First to use python in R markdown, I use RStudio and reticulate</p>
 <pre class="r"><code>library(reticulate)
 use_condaenv(&quot;r-reticulate&quot;)</code></pre>
@@ -59,8 +59,8 @@ iris</code></pre>
 ## 149           5.9          3.0           5.1          1.8  virginica
 ## 
 ## [150 rows x 5 columns]</code></pre>
-<p>Tidyverse functions are usually self-explained. To get rows with a condition there is a <code>filter</code> function, to extract a column from data frame there is <code>select</code>. <code>mutate</code> is used for adding new columns to dataframe based on values on other columns or as I use most of time with external <code>ifelse</code> statements. Let’s see how these functions and uses are in both languages.
-To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use dataframes as arguments to functions.</p>
+<p>Tidyverse functions are usually self-explained. To get rows with a condition there is a <code>filter</code> function, to extract a column from data frame there is <code>select</code>. <code>mutate</code> is used for adding new columns to data frame based on values on other columns or as I use most of time with external <code>ifelse</code> statements. Let’s see how these functions and uses are in both languages.
+To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use data frames as arguments to functions.</p>
 </div>
 <div id="filter" class="section level2">
 <h2>Filter</h2>
@@ -196,7 +196,7 @@ sepal_data</code></pre>
 ## 149           5.9          3.0
 ## 
 ## [150 rows x 2 columns]</code></pre>
-<p>However one thing I do a lot when using <code>select</code> getting a column and turn it into a vector because <code>select</code> returns a data frame with a signle column, for quick plotting with base R functions. To do this in R you need to use <code>pull</code> function after selecting the data. Then you will have a vector of the selected column which can be directly used in plotting functions like <code>plot</code> or <code>hist</code></p>
+<p>However one thing I do a lot when using <code>select</code> getting a column and turn it into a vector because <code>select</code> returns a data frame with a single column, for quick plotting with base R functions. To do this in R you need to use <code>pull</code> function after selecting the data. Then you will have a vector of the selected column which can be directly used in plotting functions like <code>plot</code> or <code>hist</code></p>
 </div>
 <div id="r-4" class="section level3">
 <h3>R</h3>
