@@ -16,7 +16,7 @@ baseurl = "https://acaromer.com/"
 copyright = "&copy; Omer Acar, {year}"
 
 # Enable analytics by entering your Google Analytics tracking ID
-googleAnalytics = ""
+googleAnalytics = "UA-145122708-1"
 
 ############################
 ## Advanced options below ##

@@ -1,8 +1,8 @@
 ---
 authors:
 - admin
-bio: My research interests include distributed robotics, mobile computing and programmable
-  matter.
+#bio: My research interests include distributed robotics, mobile computing and programmable
+ # matter.
 education:
   courses:
   - course: PhD in Computational Biology
@@ -25,6 +25,9 @@ social:
 - icon: envelope
   icon_pack: fas
   link: 'mailto:oma21@pitt.edu'
+- icon: github
+  icon_pack: fab
+  link: https://github.com/oacar
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/omeracar27
@@ -34,12 +37,14 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/oacar
+- icon: linkedin-in
+  icon_pack: fab
+  link: https://www.linkedin.com/in/omer-acar-98b00187/
 superuser: true
 user_groups:
 - Researchers
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. 
+I am PhD student in Computational Biology in CMU-Pitt Joint program. My research interests include but not limited to Yeast genetics and evolution, network biology, understanding evolution of species with a systems biology perspective. 
+I do everything in R and I advocate open source software, open access and reproducible research/science.

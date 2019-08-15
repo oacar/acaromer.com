@@ -1,38 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>R | Omer Acar</title>
-    <link>/categories/r/</link>
-      <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
-    <description>R</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Omer Acar, 2019</copyright><lastBuildDate>Mon, 05 Aug 2019 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/img/icon-192.png</url>
-      <title>R</title>
-      <link>/categories/r/</link>
-    </image>
-    
-    <item>
-      <title>Comparison of data manipulation with different R and Python packages</title>
-      <link>/post/comparison-of-data-packages/</link>
-      <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/post/comparison-of-data-packages/</guid>
-      <description>
+---
+title: Comparison of data manipulation with different R and Python packages
+author: Omer Acar
+date: '2019-08-05'
+slug: comparison-of-data-packages
+categories:
+  - R
+  - Python
+tags:
+  - dplyr
+  - data.table
+  - pandas
+  - R
+  - python
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2019-08-05T14:41:37-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
 
 
-&lt;p&gt;I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and everytime I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes.&lt;/p&gt;
-&lt;p&gt;First to use python in R markdown, I use RStudio and reticulate&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
-use_condaenv(&amp;quot;r-reticulate&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then let’s load the libraries and get the data:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+
+<p>I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and everytime I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes.</p>
+<p>First to use python in R markdown, I use RStudio and reticulate</p>
+<pre class="r"><code>library(reticulate)
+use_condaenv(&quot;r-reticulate&quot;)</code></pre>
+<p>Then let’s load the libraries and get the data:</p>
+<pre class="r"><code>library(dplyr)
 library(data.table)
-data(&amp;quot;iris&amp;quot;)
-#iris&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd
-iris = pd.read_csv(&amp;#39;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv&amp;#39;)
-iris&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      sepal_length  sepal_width  petal_length  petal_width    species
+data(&quot;iris&quot;)
+#iris</code></pre>
+<pre class="python"><code>import pandas as pd
+iris = pd.read_csv(&#39;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv&#39;)
+iris</code></pre>
+<pre><code>##      sepal_length  sepal_width  petal_length  petal_width    species
 ## 0             5.1          3.5           1.4          0.2     setosa
 ## 1             4.9          3.0           1.4          0.2     setosa
 ## 2             4.7          3.2           1.3          0.2     setosa
@@ -45,23 +51,23 @@ iris&lt;/code&gt;&lt;/pre&gt;
 ## 148           6.2          3.4           5.4          2.3  virginica
 ## 149           5.9          3.0           5.1          1.8  virginica
 ## 
-## [150 rows x 5 columns]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Tidyverse functions are usually self-explained. To get rows with a condition there is a &lt;code&gt;filter&lt;/code&gt; function, to extract a column from data frame there is &lt;code&gt;select&lt;/code&gt;. &lt;code&gt;mutate&lt;/code&gt; is used for adding new columns to dataframe based on values on other columns or as I use most of time with external &lt;code&gt;ifelse&lt;/code&gt; statements. Let’s see how these functions and uses are in both languages.
-To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use dataframes as arguments to functions.&lt;/p&gt;
-&lt;div id=&#34;filter&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Filter&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;iris_sepal_long &amp;lt;- filter(iris, Sepal.Length&amp;gt;5)
-head(iris_sepal_long)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## [150 rows x 5 columns]</code></pre>
+<p>Tidyverse functions are usually self-explained. To get rows with a condition there is a <code>filter</code> function, to extract a column from data frame there is <code>select</code>. <code>mutate</code> is used for adding new columns to dataframe based on values on other columns or as I use most of time with external <code>ifelse</code> statements. Let’s see how these functions and uses are in both languages.
+To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use dataframes as arguments to functions.</p>
+<div id="filter" class="section level2">
+<h2>Filter</h2>
+<pre class="r"><code>iris_sepal_long &lt;- filter(iris, Sepal.Length&gt;5)
+head(iris_sepal_long)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          5.4         3.9          1.7         0.4  setosa
 ## 3          5.4         3.7          1.5         0.2  setosa
 ## 4          5.8         4.0          1.2         0.2  setosa
 ## 5          5.7         4.4          1.5         0.4  setosa
-## 6          5.4         3.9          1.3         0.4  setosa&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;iris_sepal_long = iris[iris.sepal_length&amp;gt;5]
-iris_sepal_long&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      sepal_length  sepal_width  petal_length  petal_width    species
+## 6          5.4         3.9          1.3         0.4  setosa</code></pre>
+<pre class="python"><code>iris_sepal_long = iris[iris.sepal_length&gt;5]
+iris_sepal_long</code></pre>
+<pre><code>##      sepal_length  sepal_width  petal_length  petal_width    species
 ## 0             5.1          3.5           1.4          0.2     setosa
 ## 5             5.4          3.9           1.7          0.4     setosa
 ## 10            5.4          3.7           1.5          0.2     setosa
@@ -74,11 +80,11 @@ iris_sepal_long&lt;/code&gt;&lt;/pre&gt;
 ## 148           6.2          3.4           5.4          2.3  virginica
 ## 149           5.9          3.0           5.1          1.8  virginica
 ## 
-## [118 rows x 5 columns]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Any logical statements combined with logical &lt;code&gt;OR&lt;/code&gt; or &lt;code&gt;AND&lt;/code&gt; statements can be used when filtering data frame. I’ll show with python but same applies to R as well.&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;iris_sepal_filter = iris[(iris.sepal_length&amp;gt;5)&amp;amp;(iris.sepal_width&amp;lt;4)&amp;amp;(iris.species==&amp;#39;setosa&amp;#39;)]
-iris_sepal_filter&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##     sepal_length  sepal_width  petal_length  petal_width species
+## [118 rows x 5 columns]</code></pre>
+<p>Any logical statements combined with logical <code>OR</code> or <code>AND</code> statements can be used when filtering data frame. I’ll show with python but same applies to R as well.</p>
+<pre class="python"><code>iris_sepal_filter = iris[(iris.sepal_length&gt;5)&amp;(iris.sepal_width&lt;4)&amp;(iris.species==&#39;setosa&#39;)]
+iris_sepal_filter</code></pre>
+<pre><code>##     sepal_length  sepal_width  petal_length  petal_width species
 ## 0            5.1          3.5           1.4          0.2  setosa
 ## 5            5.4          3.9           1.7          0.4  setosa
 ## 10           5.4          3.7           1.5          0.2  setosa
@@ -96,14 +102,14 @@ iris_sepal_filter&lt;/code&gt;&lt;/pre&gt;
 ## 39           5.1          3.4           1.5          0.2  setosa
 ## 44           5.1          3.8           1.9          0.4  setosa
 ## 46           5.1          3.8           1.6          0.2  setosa
-## 48           5.3          3.7           1.5          0.2  setosa&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;mutate&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Mutate&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#iris$newcolumn &amp;lt;- iris$Sepal.Length/iris$Sepal.Width
-iris_sepal_length_over_width &amp;lt;- mutate(iris,sepal_length_over_width = Sepal.Length / Sepal.Width)
-head(iris_sepal_length_over_width)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 48           5.3          3.7           1.5          0.2  setosa</code></pre>
+</div>
+<div id="mutate" class="section level2">
+<h2>Mutate</h2>
+<pre class="r"><code>#iris$newcolumn &lt;- iris$Sepal.Length/iris$Sepal.Width
+iris_sepal_length_over_width &lt;- mutate(iris,sepal_length_over_width = Sepal.Length / Sepal.Width)
+head(iris_sepal_length_over_width)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
 ## 3          4.7         3.2          1.3         0.2  setosa
@@ -116,10 +122,10 @@ head(iris_sepal_length_over_width)&lt;/code&gt;&lt;/pre&gt;
 ## 3                1.468750
 ## 4                1.483871
 ## 5                1.388889
-## 6                1.384615&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;iris_sepal_length_over_width = iris.assign(sepal_length_over_width = iris.sepal_length / iris.sepal_width)
-iris_sepal_length_over_width&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      sepal_length  sepal_width  ...    species  sepal_length_over_width
+## 6                1.384615</code></pre>
+<pre class="python"><code>iris_sepal_length_over_width = iris.assign(sepal_length_over_width = iris.sepal_length / iris.sepal_width)
+iris_sepal_length_over_width</code></pre>
+<pre><code>##      sepal_length  sepal_width  ...    species  sepal_length_over_width
 ## 0             5.1          3.5  ...     setosa                 1.457143
 ## 1             4.9          3.0  ...     setosa                 1.633333
 ## 2             4.7          3.2  ...     setosa                 1.468750
@@ -132,23 +138,23 @@ iris_sepal_length_over_width&lt;/code&gt;&lt;/pre&gt;
 ## 148           6.2          3.4  ...  virginica                 1.823529
 ## 149           5.9          3.0  ...  virginica                 1.966667
 ## 
-## [150 rows x 6 columns]&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;select&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Select&lt;/h2&gt;
-&lt;p&gt;This is one of the most important functions if when dealing with data frames.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sepal_data &amp;lt;- select(iris,Sepal.Length,Sepal.Width)
-head(sepal_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width
+## [150 rows x 6 columns]</code></pre>
+</div>
+<div id="select" class="section level2">
+<h2>Select</h2>
+<p>This is one of the most important functions if when dealing with data frames.</p>
+<pre class="r"><code>sepal_data &lt;- select(iris,Sepal.Length,Sepal.Width)
+head(sepal_data)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width
 ## 1          5.1         3.5
 ## 2          4.9         3.0
 ## 3          4.7         3.2
 ## 4          4.6         3.1
 ## 5          5.0         3.6
-## 6          5.4         3.9&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;sepal_data = iris[[&amp;#39;sepal_length&amp;#39;,&amp;#39;sepal_width&amp;#39;]]
-sepal_data&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      sepal_length  sepal_width
+## 6          5.4         3.9</code></pre>
+<pre class="python"><code>sepal_data = iris[[&#39;sepal_length&#39;,&#39;sepal_width&#39;]]
+sepal_data</code></pre>
+<pre><code>##      sepal_length  sepal_width
 ## 0             5.1          3.5
 ## 1             4.9          3.0
 ## 2             4.7          3.2
@@ -161,26 +167,26 @@ sepal_data&lt;/code&gt;&lt;/pre&gt;
 ## 148           6.2          3.4
 ## 149           5.9          3.0
 ## 
-## [150 rows x 2 columns]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;However one thing I do a lot when using &lt;code&gt;select&lt;/code&gt; getting a column and turn it into a vector because &lt;code&gt;select&lt;/code&gt; returns a data frame with a signle column, for quick plotting with base R functions.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sepal_width_vector &amp;lt;- pull(select(iris,Sepal.Width))
-head(sepal_width_vector)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 3.5 3.0 3.2 3.1 3.6 3.9&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(sepal_width_vector)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-05-comparison-of-data-packages_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;sepal_width_vec = iris.sepal_width.tolist()
-sepal_width_vec&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3, 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8, 3.3, 2.7, 3.0, 2.9, 3.0, 3.0, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3.0, 2.5, 2.8, 3.2, 3.0, 3.8, 2.6, 2.2, 3.2, 2.8, 2.8, 2.7, 3.3, 3.2, 2.8, 3.0, 2.8, 3.0, 2.8, 3.8, 2.8, 2.8, 2.6, 3.0, 3.4, 3.1, 3.0, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3.0, 2.5, 3.0, 3.4, 3.0]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import seaborn as sns
+## [150 rows x 2 columns]</code></pre>
+<p>However one thing I do a lot when using <code>select</code> getting a column and turn it into a vector because <code>select</code> returns a data frame with a signle column, for quick plotting with base R functions.</p>
+<pre class="r"><code>sepal_width_vector &lt;- pull(select(iris,Sepal.Width))
+head(sepal_width_vector)</code></pre>
+<pre><code>## [1] 3.5 3.0 3.2 3.1 3.6 3.9</code></pre>
+<pre class="r"><code>hist(sepal_width_vector)</code></pre>
+<p><img src="/post/2019-08-05-comparison-of-data-packages_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="python"><code>sepal_width_vec = iris.sepal_width.tolist()
+sepal_width_vec</code></pre>
+<pre><code>## [3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3, 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8, 3.3, 2.7, 3.0, 2.9, 3.0, 3.0, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3.0, 2.5, 2.8, 3.2, 3.0, 3.8, 2.6, 2.2, 3.2, 2.8, 2.8, 2.7, 3.3, 3.2, 2.8, 3.0, 2.8, 3.0, 2.8, 3.8, 2.8, 2.8, 2.6, 3.0, 3.4, 3.1, 3.0, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3.0, 2.5, 3.0, 3.4, 3.0]</code></pre>
+<pre class="python"><code>import seaborn as sns
 
-sns.set_style(&amp;#39;darkgrid&amp;#39;)
-sns.distplot(sepal_width_vec)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-05-comparison-of-data-packages_files/figure-html/unnamed-chunk-13-1.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sorting&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Sorting&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;arrange(iris)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+sns.set_style(&#39;darkgrid&#39;)
+sns.distplot(sepal_width_vec)</code></pre>
+<p><img src="/post/2019-08-05-comparison-of-data-packages_files/figure-html/unnamed-chunk-13-1.png" /><!-- --></p>
+</div>
+<div id="sorting" class="section level2">
+<h2>Sorting</h2>
+<pre class="r"><code>arrange(iris)</code></pre>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 1            5.1         3.5          1.4         0.2     setosa
 ## 2            4.9         3.0          1.4         0.2     setosa
 ## 3            4.7         3.2          1.3         0.2     setosa
@@ -330,63 +336,8 @@ sns.distplot(sepal_width_vec)&lt;/code&gt;&lt;/pre&gt;
 ## 147          6.3         2.5          5.0         1.9  virginica
 ## 148          6.5         3.0          5.2         2.0  virginica
 ## 149          6.2         3.4          5.4         2.3  virginica
-## 150          5.9         3.0          5.1         1.8  virginica&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;summarizing-data-with-groups&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Summarizing data with groups&lt;/h2&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>
-
-
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+## 150          5.9         3.0          5.1         1.8  virginica</code></pre>
+</div>
+<div id="summarizing-data-with-groups" class="section level2">
+<h2>Summarizing data with groups</h2>
+</div>
