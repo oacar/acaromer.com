@@ -31,11 +31,17 @@ projects: []
 <p>First to use python in R markdown, I use RStudio and reticulate</p>
 <pre class="r"><code>library(reticulate)
 use_condaenv(&quot;r-reticulate&quot;)</code></pre>
-<p>Then let’s load the libraries and get the data:</p>
+<p>Then let’s load the libraries and get the data, I’ll use iris dataset that’s available by default in R:</p>
+<div id="r" class="section level3">
+<h3>R</h3>
 <pre class="r"><code>library(dplyr)
 library(data.table)
 data(&quot;iris&quot;)
 #iris</code></pre>
+</div>
+<div id="python" class="section level3">
+<h3>Python</h3>
+<p>You can get the same data from seaborn-data link.</p>
 <pre class="python"><code>import pandas as pd
 iris = pd.read_csv(&#39;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv&#39;)
 iris</code></pre>
@@ -55,8 +61,12 @@ iris</code></pre>
 ## [150 rows x 5 columns]</code></pre>
 <p>Tidyverse functions are usually self-explained. To get rows with a condition there is a <code>filter</code> function, to extract a column from data frame there is <code>select</code>. <code>mutate</code> is used for adding new columns to dataframe based on values on other columns or as I use most of time with external <code>ifelse</code> statements. Let’s see how these functions and uses are in both languages.
 To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use dataframes as arguments to functions.</p>
+</div>
 <div id="filter" class="section level2">
 <h2>Filter</h2>
+<p>Let’s take the rows with Sepal Length &gt; 5 condition.</p>
+<div id="r-1" class="section level3">
+<h3>R</h3>
 <pre class="r"><code>iris_sepal_long &lt;- filter(iris, Sepal.Length&gt;5)
 head(iris_sepal_long)</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -66,6 +76,9 @@ head(iris_sepal_long)</code></pre>
 ## 4          5.8         4.0          1.2         0.2  setosa
 ## 5          5.7         4.4          1.5         0.4  setosa
 ## 6          5.4         3.9          1.3         0.4  setosa</code></pre>
+</div>
+<div id="python-1" class="section level3">
+<h3>Python</h3>
 <pre class="python"><code>iris_sepal_long = iris[iris.sepal_length&gt;5]
 iris_sepal_long</code></pre>
 <pre><code>##      sepal_length  sepal_width  petal_length  petal_width    species
@@ -82,7 +95,7 @@ iris_sepal_long</code></pre>
 ## 149           5.9          3.0           5.1          1.8  virginica
 ## 
 ## [118 rows x 5 columns]</code></pre>
-<p>Any logical statements combined with logical <code>OR</code> or <code>AND</code> statements can be used when filtering data frame. I’ll show with python but same applies to R as well.</p>
+<p>Any logical statements combined with logical <code>OR</code> or <code>AND</code> signs can be used when filtering data frame. I’ll show with python but same applies to R as well. For example we can select rows with Sepal length &gt; 5 and Sepal width &lt; 4 in <code>setosa</code> species in the following way:</p>
 <pre class="python"><code>iris_sepal_filter = iris[(iris.sepal_length&gt;5)&amp;(iris.sepal_width&lt;4)&amp;(iris.species==&#39;setosa&#39;)]
 iris_sepal_filter</code></pre>
 <pre><code>##     sepal_length  sepal_width  petal_length  petal_width species
@@ -105,8 +118,12 @@ iris_sepal_filter</code></pre>
 ## 46           5.1          3.8           1.6          0.2  setosa
 ## 48           5.3          3.7           1.5          0.2  setosa</code></pre>
 </div>
+</div>
 <div id="mutate" class="section level2">
 <h2>Mutate</h2>
+<p>Let’s make another data frame that has a column of Sepal Length to Sepal Width ratio. While <code>mutate</code> is the function in R, <code>assign</code> will do the same thing in Python.</p>
+<div id="r-2" class="section level3">
+<h3>R</h3>
 <pre class="r"><code>#iris$newcolumn &lt;- iris$Sepal.Length/iris$Sepal.Width
 iris_sepal_length_over_width &lt;- mutate(iris,sepal_length_over_width = Sepal.Length / Sepal.Width)
 head(iris_sepal_length_over_width)</code></pre>
@@ -124,6 +141,9 @@ head(iris_sepal_length_over_width)</code></pre>
 ## 4                1.483871
 ## 5                1.388889
 ## 6                1.384615</code></pre>
+</div>
+<div id="python-2" class="section level3">
+<h3>Python</h3>
 <pre class="python"><code>iris_sepal_length_over_width = iris.assign(sepal_length_over_width = iris.sepal_length / iris.sepal_width)
 iris_sepal_length_over_width</code></pre>
 <pre><code>##      sepal_length  sepal_width  ...    species  sepal_length_over_width
@@ -141,9 +161,13 @@ iris_sepal_length_over_width</code></pre>
 ## 
 ## [150 rows x 6 columns]</code></pre>
 </div>
+</div>
 <div id="select" class="section level2">
 <h2>Select</h2>
-<p>This is one of the most important functions if when dealing with data frames.</p>
+<p>This is one of the most important functions when dealing with data frames. You don’t always need all the data in a data frame but only some columns.</p>
+<p>Let’s select columns related with Sepal data.</p>
+<div id="r-3" class="section level3">
+<h3>R</h3>
 <pre class="r"><code>sepal_data &lt;- select(iris,Sepal.Length,Sepal.Width)
 head(sepal_data)</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width
@@ -153,6 +177,9 @@ head(sepal_data)</code></pre>
 ## 4          4.6         3.1
 ## 5          5.0         3.6
 ## 6          5.4         3.9</code></pre>
+</div>
+<div id="python-3" class="section level3">
+<h3>Python</h3>
 <pre class="python"><code>sepal_data = iris[[&#39;sepal_length&#39;,&#39;sepal_width&#39;]]
 sepal_data</code></pre>
 <pre><code>##      sepal_length  sepal_width
@@ -169,12 +196,19 @@ sepal_data</code></pre>
 ## 149           5.9          3.0
 ## 
 ## [150 rows x 2 columns]</code></pre>
-<p>However one thing I do a lot when using <code>select</code> getting a column and turn it into a vector because <code>select</code> returns a data frame with a signle column, for quick plotting with base R functions.</p>
+<p>However one thing I do a lot when using <code>select</code> getting a column and turn it into a vector because <code>select</code> returns a data frame with a signle column, for quick plotting with base R functions. To do this in R you need to use <code>pull</code> function after selecting the data. Then you will have a vector of the selected column which can be directly used in plotting functions like <code>plot</code> or <code>hist</code></p>
+</div>
+<div id="r-4" class="section level3">
+<h3>R</h3>
 <pre class="r"><code>sepal_width_vector &lt;- pull(select(iris,Sepal.Width))
 head(sepal_width_vector)</code></pre>
 <pre><code>## [1] 3.5 3.0 3.2 3.1 3.6 3.9</code></pre>
 <pre class="r"><code>hist(sepal_width_vector)</code></pre>
 <p><img src="/post/2019-08-05-comparison-of-data-packages_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="python-4" class="section level3">
+<h3>Python</h3>
+<p>I think there would be different solution to this in Python way but to directly replicate what I did above in R you can call tolist() function on the column data.</p>
 <pre class="python"><code>sepal_width_vec = iris.sepal_width.tolist()
 sepal_width_vec</code></pre>
 <pre><code>## [3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3, 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8, 3.3, 2.7, 3.0, 2.9, 3.0, 3.0, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3.0, 2.5, 2.8, 3.2, 3.0, 3.8, 2.6, 2.2, 3.2, 2.8, 2.8, 2.7, 3.3, 3.2, 2.8, 3.0, 2.8, 3.0, 2.8, 3.8, 2.8, 2.8, 2.6, 3.0, 3.4, 3.1, 3.0, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3.0, 2.5, 3.0, 3.4, 3.0]</code></pre>
@@ -183,6 +217,12 @@ sepal_width_vec</code></pre>
 sns.set_style(&#39;darkgrid&#39;)
 sns.distplot(sepal_width_vec)</code></pre>
 <p><img src="/post/2019-08-05-comparison-of-data-packages_files/figure-html/unnamed-chunk-13-1.png" /><!-- --></p>
+</div>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>Here I compared the mostly used functions in data science when dealing with data frames in R using dplyr functions and in Python using Pandas. These are only single ways of doing these things and R has multiple different ways of doing same things due to difference in base R data frame functions and packages like <code>dplyr</code> or <code>data.table</code>. I feel <code>tidyverse</code> way of doing things are intuitive and easy to read especially using pipes.</p>
+<p>As far as I know Pandas is the mostly used package for working with data frames in Python. I am sure there are other packages but I never need to work with them or encountered. Pandas website also has a [reference page][<a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html" class="uri">https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html</a>] for R and Pandas function comparisons.</p>
 <!-- ## Sorting -->
 <!-- ```{r} -->
 <!-- arrange(iris) -->

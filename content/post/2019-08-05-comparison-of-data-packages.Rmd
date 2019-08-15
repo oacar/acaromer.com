@@ -39,13 +39,19 @@ library(reticulate)
 use_condaenv("r-reticulate")
 ```
 
-Then let's load the libraries and get the data:
+Then let's load the libraries and get the data, I'll use iris dataset that's available by default in R:
+
+### R
+
 ```{r}
 library(dplyr)
 library(data.table)
 data("iris")
 #iris
 ```
+
+### Python
+You can get the same data from seaborn-data link.
 
 ```{python}
 import pandas as pd
@@ -58,16 +64,22 @@ To actually compare functions and to not confuse people who are not familiar wit
 
 
 ## Filter
+Let's take the rows with Sepal Length > 5 condition.
+
+### R
 ```{r}
 iris_sepal_long <- filter(iris, Sepal.Length>5)
 head(iris_sepal_long)
 ```
 
+### Python
 ```{python}
 iris_sepal_long = iris[iris.sepal_length>5]
 iris_sepal_long
 ```
-Any logical statements combined with logical `OR` or `AND` statements can be used when filtering data frame. I'll show with python but same applies to R as well.
+
+
+Any logical statements combined with logical `OR` or `AND` signs can be used when filtering data frame. I'll show with python but same applies to R as well. For example we can select rows with Sepal length > 5 and Sepal width < 4 in `setosa` species in the following way:
 
 ```{python}
 iris_sepal_filter = iris[(iris.sepal_length>5)&(iris.sepal_width<4)&(iris.species=='setosa')]
@@ -76,11 +88,19 @@ iris_sepal_filter
 
 
 ## Mutate
+
+Let's make another data frame that has a column of Sepal Length to Sepal Width ratio. While ```mutate``` is the function in R, ```assign``` will do the same thing in Python.
+
+### R
+
 ```{r}
 #iris$newcolumn <- iris$Sepal.Length/iris$Sepal.Width
 iris_sepal_length_over_width <- mutate(iris,sepal_length_over_width = Sepal.Length / Sepal.Width)
 head(iris_sepal_length_over_width)
 ```
+
+
+### Python
 
 ```{python}
 iris_sepal_length_over_width = iris.assign(sepal_length_over_width = iris.sepal_length / iris.sepal_width)
@@ -89,23 +109,38 @@ iris_sepal_length_over_width
 
 
 ## Select
-This is one of the most important functions if when dealing with data frames. 
+This is one of the most important functions when dealing with data frames. You don't always need all the data in a data frame but only some columns.
+
+Let's select columns related with Sepal data.
+
+### R
+
 ```{r}
 sepal_data <- select(iris,Sepal.Length,Sepal.Width)
 head(sepal_data)
 ```
+
+
+### Python
+
 ```{python}
 sepal_data = iris[['sepal_length','sepal_width']]
 sepal_data
 ```
 
-However one thing I do a lot when using ```select``` getting a column and turn it into a vector because `select` returns a data frame with a signle column, for quick plotting with base R functions.
+However one thing I do a lot when using ```select``` getting a column and turn it into a vector because `select` returns a data frame with a signle column, for quick plotting with base R functions. To do this in R you need to use `pull` function after selecting the data. Then you will have a vector of the selected column which can be directly used in plotting functions like `plot` or `hist`
+
+### R
 
 ```{r}
 sepal_width_vector <- pull(select(iris,Sepal.Width))
 head(sepal_width_vector)
 hist(sepal_width_vector)
 ```
+
+### Python
+
+I think there would be different solution to this in Python way but to directly replicate what I did above in R you can call tolist() function on the column data.
 
 ```{python}
 sepal_width_vec = iris.sepal_width.tolist()
@@ -115,6 +150,14 @@ import seaborn as sns
 sns.set_style('darkgrid')
 sns.distplot(sepal_width_vec)
 ```
+
+
+## Conclusions
+
+Here I compared the mostly used functions in data science when dealing with data frames in R using dplyr functions and in Python using Pandas. These are only single ways of doing these things and R has multiple different ways of doing same things due to difference in base R data frame functions and packages like `dplyr` or `data.table`. I feel `tidyverse` way of doing things are intuitive and easy to read especially using pipes. 
+
+As far as I know Pandas is the mostly used package for working with data frames in Python. I am sure there are other packages but I never need to work with them or encountered. Pandas website also has a [reference page][https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html] for R and Pandas function comparisons.
+
 
 
 <!-- ## Sorting -->
