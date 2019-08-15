@@ -1,5 +1,5 @@
 ---
-title: Comparison of data manipulation with different R and Python packages Part I
+title: Comparison of data manipulation with R and Python packages Part I
 author: Omer Acar
 date: '2019-08-05'
 slug: comparison-of-data-packages
