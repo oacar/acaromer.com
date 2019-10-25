@@ -39,7 +39,7 @@ social:
 #  link: https://github.com/oacar
 - icon: linkedin-in
   icon_pack: fab
-  link: https://www.linkedin.com/in/omer-acar-98b00187/
+  link: https://www.linkedin.com/in/acaromer
 superuser: true
 user_groups:
 - Researchers
