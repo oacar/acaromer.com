@@ -27,7 +27,7 @@ projects: []
 ---
 
 
-I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. However there are times where I had to use Python for due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However I am in no way a Python expert and every time I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes. 
+I have been using tidyverse functions with dplyr or tidyr for data manipulation mainly. There are times where I had to use Python due to need for a specific package or collaboration with people using only Python, thus needed to use Pandas for similar purposes. However, I am in no way a Python expert and every time I needed to look up a lot of basic things and end up just going back and forth between Python and R. Here, I wanted to create a reference page with examples for myself and people who are interested in same things to use Pandas and Tidyverse functions for data manipulation purposes. 
 
 
 ```{r, include=FALSE}
@@ -59,7 +59,7 @@ iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/maste
 iris
 ```
 
-Tidyverse functions are usually self-explained. To get rows with a condition there is a ```filter``` function, to extract a column from data frame there is ```select```. ```mutate``` is used for adding new columns to data frame based on values on other columns or as I use most of time with external ```ifelse``` statements. Let's see how these functions and uses are in both languages.
+Tidyverse functions are usually self-explained. In order to get rows with a condition there is a ```filter``` function, to extract a column from data frame there is ```select```. ```mutate``` is used for adding new columns to data frame based on values on other columns or as I use most of time with external ```ifelse``` statements. Let's see how these functions and uses are in both languages.
 To actually compare functions and to not confuse people who are not familiar with pipes in tidyverse, I will omit using pipes and use data frames as arguments to functions.
 
 
@@ -89,7 +89,7 @@ iris_sepal_filter
 
 ## Mutate
 
-Let's make another data frame that has a column of Sepal Length to Sepal Width ratio. While ```mutate``` is the function in R, ```assign``` will do the same thing in Python.
+Let's make another data frame with a column of Sepal Length to Sepal Width ratio. While ```mutate``` is the function in R, ```assign``` will do the same thing in Python.
 
 ### R
 
@@ -105,6 +105,12 @@ head(iris_sepal_length_over_width)
 ```{python}
 iris_sepal_length_over_width = iris.assign(sepal_length_over_width = iris.sepal_length / iris.sepal_width)
 iris_sepal_length_over_width
+```
+
+For Python, following is the equivalent of assign:
+```{python}
+iris['sepal_length_over_width'] = iris.sepal_length / iris.sepal_width
+iris
 ```
 
 
