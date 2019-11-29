@@ -9,14 +9,14 @@
 #  weight = 10
 
 [[main]]
-  name = "Blog"
-  url = "#blog"
+  name = "Programming"
+  url = "/programming"
   weight = 20
 
-#[[main]]
-#  name = "Projects"
-#  url = "/projects"
-#  weight = 30
+[[main]]
+  name = "Science"
+  url = "/science"
+  weight = 30
 
 #[[main]]
 #  name = "Publications"

@@ -13,9 +13,9 @@ education:
     year: 2017
 email: "oma21@pitt.edu"
 interests:
-- Molecular Evolution
-- Yeast Genetics
 - Data Science
+- Network Biology
+- Molecular Evolution
 name: Omer Acar
 organizations:
 - name: University of Pittsburgh
@@ -46,5 +46,5 @@ user_groups:
 - Visitors
 ---
 
-I am PhD student in Computational Biology in CMU-Pitt Joint program. My research interests include but not limited to Yeast genetics and evolution, network biology, understanding evolution of species with a systems biology perspective. 
-I do everything in R and I advocate open source software, open access and reproducible research/science.
+I am PhD student in Computational Biology in CMU-Pitt Joint PhD program. I consider myself as a data scientist working on biological data. My research interests include network biology, molecular evolution, and understanding evolution of species from a systems and networj biology perspective. 
+I do everything in R and Python and I advocate open source software, open access and reproducible research/science.
