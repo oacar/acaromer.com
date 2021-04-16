@@ -2,6 +2,7 @@
 title: Comparison of data manipulation with R and Python packages Part I
 author: Omer Acar
 date: '2019-08-05'
+output: md_document
 slug: comparison-of-data-packages
 draft: false
 categories:

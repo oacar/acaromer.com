@@ -1,6 +1,6 @@
 ---
 authors:
-- admin
+- omeracar
 #bio: My research interests include distributed robotics, mobile computing and programmable
  # matter.
 education:
@@ -46,5 +46,7 @@ user_groups:
 - Visitors
 ---
 
-I am PhD student in Computational Biology in CMU-Pitt Joint PhD program. I consider myself as a data scientist working on biological data. My research interests include network biology, molecular evolution, and understanding evolution of species from a systems and networj biology perspective. 
+I am PhD student in Computational Biology in CMU-Pitt Joint PhD program. I consider myself as a data scientist working on biological data. My research interests include network biology, molecular evolution, and understanding evolution of species from a systems and network biology perspective. 
+
+I like to learn new things from front end web technologies to machine learning algortihms. I always admire cool data visualizations. 
 I do everything in R and Python and I advocate open source software, open access and reproducible research/science.
