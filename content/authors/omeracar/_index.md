@@ -11,20 +11,20 @@ education:
   - course: BSc in Materials Science and Engineering
     institution: Sabanci University
     year: 2017
-email: "oma21@pitt.edu"
+email: "omer@acar.one"
 interests:
-- Data Science
+- Data Engineering
 - Network Biology
-- Computational Genomics
+- Bioinformatics
 name: Omer Acar
 organizations:
 - name: University of Pittsburgh
   url: ""
-role: PhD Candidate
+role: Data Engineer
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'mailto:oma21@pitt.edu'
+  link: 'mailto:omer1@acar.one'
 - icon: github
   icon_pack: fab
   link: https://github.com/oacar
@@ -43,4 +43,4 @@ user_groups:
 - Visitors
 ---
 
-I am PhD student in Computational Biology in CMU-Pitt Joint PhD program. I consider myself as a data scientist working on biological data. My research interests include network biology, molecular evolution, and understanding evolution of species from a systems and network biology perspective. 
+I am a dedicated Computational Biologist with over 5 years of experience in the field, specializing in next-generation sequencing data, molecular and systems biology, and machine learning. My passion lies in extracting valuable insights from complex biological data, and I have a proven track record in designing and executing research projects from start to finish.
